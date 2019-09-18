@@ -4,7 +4,7 @@
 #
 #-------------------------------------------------
 
-QT       += core gui widgets
+QT       += core gui charts widgets
 
 TARGET = QRandomDistributionGenerator
 TEMPLATE = app
@@ -42,3 +42,5 @@ DISTFILES +=
 
 RESOURCES += \
     icons.qrc
+
+RC_ICONS = icon.ico

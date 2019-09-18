@@ -6,16 +6,18 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>364</width>
-    <height>270</height>
+    <width>569</width>
+    <height>309</height>
    </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>569</width>
+    <height>309</height>
+   </size>
   </property>
   <property name="windowTitle">
    <string>Random Distribution Generator</string>
-  </property>
-  <property name="windowIcon">
-   <iconset>
-    <normaloff>icon.png</normaloff>icon.png</iconset>
   </property>
   <widget class="QWidget" name="centralWidget">
    <property name="autoFillBackground">
@@ -82,9 +84,15 @@
      </layout>
     </item>
     <item>
-     <layout class="QHBoxLayout" name="horizontalLayout_3">
+     <layout class="QHBoxLayout" name="centerHorizontalLayout">
       <item>
        <widget class="QTableWidget" name="params">
+        <property name="frameShape">
+         <enum>QFrame::StyledPanel</enum>
+        </property>
+        <property name="frameShadow">
+         <enum>QFrame::Plain</enum>
+        </property>
         <attribute name="verticalHeaderVisible">
          <bool>false</bool>
         </attribute>
