@@ -10,9 +10,13 @@
 
 #include <cmath>
 
-#include <iostream>
-
 namespace distribution {
+
+    namespace types {
+        using DensityPair = std::pair<double, double>;
+        using RandomGenerator = std::function<double()>;
+    }
+
     const double pi = std::atan(1) * 4;
 
     auto random() -> double {
@@ -30,23 +34,23 @@ namespace distribution {
 
     /* lambda: [capture](params) -> type { body } */
 
-    auto uniform(double min, double max) -> std::function<double()> {
+    auto uniform(double min, double max) -> types::RandomGenerator {
         return [min, max] () -> double {
             return (min + (max - min) * random());
         };
     }
 
-    auto triangular(double min, double max, double mode) -> std::function<double()> {
+    auto triangular(double min, double max, double mode) -> types::RandomGenerator {
         return [min, max, mode] () -> double {
             double u = random();
 
             return (u < ((mode - min) / (max - min)))
-                    ? (min + std::sqrt(random() * (mode - min) * (max - min)))
+                    ? (min + std::sqrt(u * (mode - min) * (max - min)))
                     : (max - std::sqrt((1.0 - u) * (max - mode) * (max - min)));
         };
     }
 
-    auto exponential(double mi, double x0 = 0.0) -> std::function<double()> {
+    auto exponential(double mi, double x0 = 0.0) -> types::RandomGenerator {
         double alpha = 1.0 / (mi - x0);
 
         return [alpha, x0] ()  -> double {
@@ -54,10 +58,34 @@ namespace distribution {
         };
     }
 
-    auto normal(double sigma, double mi = 0.0) -> std::function<double()> {
+    auto normal(double sigma, double mi = 0.0) -> types::RandomGenerator {
         return [sigma, mi] () -> double {
             double z = std::sqrt(-2.0 * std::log(random())) * std::sin(2.0 * pi * random());
             return mi + sigma * z;
+        };
+    }
+
+    auto empirical(std::map<double, double> const& dpf) -> types::RandomGenerator {
+        return [dpf] () -> double {
+            double u = random();
+
+            auto pair =  std::find_if(std::begin(dpf), std::end(dpf), [u] (types::DensityPair const& p) -> bool {
+                return u <= p.first;
+            });
+
+            return pair->second;
+        };
+    }
+
+    auto guard(types::RandomGenerator distribution) -> types::RandomGenerator {
+        return [distribution] () -> double {
+            double u = distribution();
+
+            while (u < 0.0) {
+                u = distribution();
+            }
+
+            return u;
         };
     }
 

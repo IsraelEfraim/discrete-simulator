@@ -4,7 +4,7 @@
 
 auto makeParamRow(QString const& name) -> std::pair<QTableWidgetItem*, QTableWidgetItem*> {
     QTableWidgetItem* param = new QTableWidgetItem();
-    param->setFlags(param->flags() ^ Qt::ItemIsEditable);
+    param->setFlags(param->flags() ^ Qt::ItemIsEditable ^ Qt::ItemIsSelectable ^ Qt::ItemIsEnabled);
     param->setText(name);
 
     QTableWidgetItem* value = new QTableWidgetItem();
@@ -28,7 +28,6 @@ MainWindow::MainWindow(QWidget *parent) :
 auto MainWindow::formatTableColumns() -> void {
     ui->params->horizontalHeader()->setStretchLastSection(true);
     ui->params->setColumnWidth(0, 115);
-    // ui->params->setColumnWidth(1, 160);
 }
 
 auto MainWindow::updateTableRows(std::vector<QString> headers) -> void {

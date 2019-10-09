@@ -53,7 +53,7 @@ private:
     auto saveMapAs(QString filename, std::map<double, size_t> const& map) -> void;
 
     auto formatChartView() -> void;
-    auto MainWindow::formatChart(std::map<double, size_t> histogram) -> void;
+    auto formatChart(std::map<double, size_t> histogram) -> void;
 };
 
 #endif // MAINWINDOW_H
