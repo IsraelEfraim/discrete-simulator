@@ -1,0 +1,12 @@
+Estrutura:
+
+#sobre topico
+
+#sobre simulacao em geral
+Devemos criar uma biblioteca exclusiva para as funções de distribuição e para a simulação e do projeto da UI importá-los.
+
+#sobre simulador
+O fluxograma do simulador parece que está incorreto, pois um evento de chegada num momento em que o recurso está ocupado
+não é considerado futuramente.
+Penso que o modelo de simulação de chegada deveria ser feita pelo disparo de eventos + checagem do estado do servidor.
+

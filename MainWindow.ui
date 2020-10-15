@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>569</width>
-    <height>309</height>
+    <width>969</width>
+    <height>483</height>
    </rect>
   </property>
   <property name="minimumSize">
@@ -17,7 +17,7 @@
    </size>
   </property>
   <property name="windowTitle">
-   <string>Random Distribution Generator</string>
+   <string>[Coliseum] A simple queue simulator</string>
   </property>
   <widget class="QWidget" name="centralWidget">
    <property name="autoFillBackground">
@@ -27,57 +27,251 @@
     <item>
      <layout class="QHBoxLayout" name="horizontalLayout_2">
       <item>
-       <widget class="QComboBox" name="cbDistribution">
+       <widget class="QLabel" name="label">
         <property name="minimumSize">
          <size>
-          <width>140</width>
-          <height>22</height>
+          <width>150</width>
+          <height>0</height>
          </size>
         </property>
-        <property name="currentText">
-         <string/>
+        <property name="text">
+         <string>Time Between Arrival (TEC)</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QComboBox" name="expressionTec">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="minimumSize">
+         <size>
+          <width>0</width>
+          <height>0</height>
+         </size>
+        </property>
+        <property name="editable">
+         <bool>true</bool>
         </property>
         <property name="currentIndex">
          <number>-1</number>
         </property>
-        <property name="frame">
+        <item>
+         <property name="text">
+          <string>UNIF ( Min, Max )</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>TRIA ( Min, Mode, Max )</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>EXPO ( μ, x0 )</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>NORM ( μ, σ )</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>DISC ( P1, V1,... )</string>
+         </property>
+        </item>
+       </widget>
+      </item>
+     </layout>
+    </item>
+    <item>
+     <layout class="QHBoxLayout" name="horizontalLayout_3">
+      <item>
+       <widget class="QLabel" name="label_2">
+        <property name="minimumSize">
+         <size>
+          <width>150</width>
+          <height>0</height>
+         </size>
+        </property>
+        <property name="text">
+         <string>Time of Service (TS)</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QComboBox" name="expressionTs">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="minimumSize">
+         <size>
+          <width>0</width>
+          <height>0</height>
+         </size>
+        </property>
+        <property name="editable">
+         <bool>true</bool>
+        </property>
+        <property name="currentIndex">
+         <number>-1</number>
+        </property>
+        <item>
+         <property name="text">
+          <string>UNIF ( Min, Max )</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>TRIA ( Min, Mode, Max )</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>EXPO ( μ, x0 )</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>NORM ( μ, σ)</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>DISC ( P1, V1, ...)</string>
+         </property>
+        </item>
+       </widget>
+      </item>
+     </layout>
+    </item>
+    <item>
+     <layout class="QHBoxLayout" name="horizontalLayout_4">
+      <item>
+       <widget class="QLabel" name="label_3">
+        <property name="minimumSize">
+         <size>
+          <width>150</width>
+          <height>0</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>16777215</width>
+          <height>16777215</height>
+         </size>
+        </property>
+        <property name="text">
+         <string>Queue Policy</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QComboBox" name="queuePolicySelector">
+        <property name="minimumSize">
+         <size>
+          <width>0</width>
+          <height>0</height>
+         </size>
+        </property>
+        <property name="editable">
          <bool>false</bool>
         </property>
         <item>
          <property name="text">
-          <string>Uniform</string>
+          <string>Unlimited</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>Triangular</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>Exponential</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>Normal</string>
+          <string>Limited</string>
          </property>
         </item>
        </widget>
       </item>
       <item>
-       <widget class="QSpinBox" name="sbQuantity">
+       <widget class="QSpinBox" name="queuePolicyValue">
+        <property name="enabled">
+         <bool>false</bool>
+        </property>
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+    <item>
+     <layout class="QHBoxLayout" name="horizontalLayout_5">
+      <item>
+       <widget class="QLabel" name="label_4">
         <property name="minimumSize">
          <size>
-          <width>0</width>
-          <height>22</height>
+          <width>150</width>
+          <height>0</height>
          </size>
         </property>
-        <property name="minimum">
+        <property name="text">
+         <string>Simulation Speed</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QSlider" name="simulationSpeed">
+        <property name="maximum">
+         <number>100</number>
+        </property>
+        <property name="singleStep">
          <number>1</number>
         </property>
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="invertedAppearance">
+         <bool>true</bool>
+        </property>
+        <property name="tickPosition">
+         <enum>QSlider::NoTicks</enum>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+    <item>
+     <layout class="QHBoxLayout" name="horizontalLayout_6">
+      <item>
+       <widget class="QLabel" name="label_5">
+        <property name="minimumSize">
+         <size>
+          <width>150</width>
+          <height>0</height>
+         </size>
+        </property>
+        <property name="text">
+         <string>Simulation Time Limit</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QDoubleSpinBox" name="simulationTimeLimit">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
         <property name="maximum">
-         <number>999999999</number>
+         <double>10000000000000000.000000000000000</double>
         </property>
        </widget>
       </item>
@@ -86,24 +280,65 @@
     <item>
      <layout class="QHBoxLayout" name="centerHorizontalLayout">
       <item>
-       <widget class="QTableWidget" name="params">
-        <property name="frameShape">
-         <enum>QFrame::StyledPanel</enum>
-        </property>
-        <property name="frameShadow">
-         <enum>QFrame::Plain</enum>
-        </property>
-        <attribute name="verticalHeaderVisible">
-         <bool>false</bool>
-        </attribute>
+       <widget class="QTableWidget" name="simulationTableView">
         <column>
          <property name="text">
-          <string>Parameter</string>
+          <string>Ref</string>
          </property>
         </column>
         <column>
          <property name="text">
-          <string>Value</string>
+          <string>Clock</string>
+         </property>
+        </column>
+        <column>
+         <property name="text">
+          <string>Event Type</string>
+         </property>
+        </column>
+        <column>
+         <property name="text">
+          <string>Queue Size</string>
+         </property>
+        </column>
+        <column>
+         <property name="text">
+          <string>TC</string>
+         </property>
+        </column>
+        <column>
+         <property name="text">
+          <string>Calendar</string>
+         </property>
+        </column>
+        <column>
+         <property name="text">
+          <string>Avg Queue Size</string>
+         </property>
+        </column>
+        <column>
+         <property name="text">
+          <string>Avg Resource Busy</string>
+         </property>
+        </column>
+        <column>
+         <property name="text">
+          <string>Avg Queue Time</string>
+         </property>
+        </column>
+        <column>
+         <property name="text">
+          <string>Avg Total Time</string>
+         </property>
+        </column>
+        <column>
+         <property name="text">
+          <string>Entity Out</string>
+         </property>
+        </column>
+        <column>
+         <property name="text">
+          <string>Entity Max</string>
          </property>
         </column>
        </widget>
@@ -126,16 +361,16 @@
        </spacer>
       </item>
       <item>
-       <widget class="QPushButton" name="btGenerate">
+       <widget class="QPushButton" name="runButton">
         <property name="text">
-         <string>Generate</string>
+         <string>Run Simulation</string>
         </property>
        </widget>
       </item>
       <item>
-       <widget class="QPushButton" name="btCloseApp">
+       <widget class="QPushButton" name="quitButton">
         <property name="text">
-         <string>Close</string>
+         <string>Quit</string>
         </property>
        </widget>
       </item>

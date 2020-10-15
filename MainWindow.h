@@ -18,7 +18,11 @@
 #include <QtCharts/QChartView>
 #include <QtCharts/QChart>
 
+#include "simulator/SimulationView.hpp"
+
 using namespace QtCharts;
+
+namespace sim = simulation;
 
 namespace Ui {
 class MainWindow;
@@ -33,27 +37,22 @@ public:
     ~MainWindow();
 
 private slots:
-    void on_cbDistribution_currentIndexChanged(const QString &arg1);
+    void on_queuePolicySelector_currentIndexChanged(const QString &arg1);
 
-    void on_btGenerate_clicked();
-    void on_btCloseApp_clicked();
+    void on_quitButton_clicked();
+
+    void on_runButton_clicked();
 
 private:
     Ui::MainWindow *ui;
 
-    QChartView *chartView;
-    QString activeDir;
+    auto insertDataRow(sim::view::DataRow const& dr) -> void;
 
-    auto formatTableColumns() -> void;
-    auto updateTableRows(std::vector<QString> headers) -> void;
+    auto saveResults(sim::Model const& model) -> void;
 
-    auto fetchParams() -> std::map<QString, double>;
+    auto newStateAcquired(sim::Model const& model) -> void;
 
-    auto saveAs(QString filename, std::vector<double> const& dst) -> void;
-    auto saveMapAs(QString filename, std::map<double, size_t> const& map) -> void;
-
-    auto formatChartView() -> void;
-    auto formatChart(std::map<double, size_t> histogram) -> void;
+    sim::Model model;
 };
 
 #endif // MAINWINDOW_H
